@@ -13,6 +13,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $phone
  * @property string $email
 */
+
+// This is model for employee where all the relationships are defined
+
+
 class Employee extends Model
 {
     use SoftDeletes;
