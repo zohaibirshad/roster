@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use App\Employee;
 use Auth;
 
+// This controller is from a service provider website where 
+// a customer selects a service and book employee(service provider)
 
 class ServiceController extends Controller
 {
@@ -22,6 +24,12 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+        // This Piece of code is main algorithm when user clicks on Booking button
+        // and selects time and an appointment is set for the employee
+        // Appointment is automtically assigned to employee which employee is 
+        // free in that slot of time and related to that service
+        // 
+        
         if($request->session()->exists('appointment_data')){
             
             $data=session('appointment_data');
@@ -44,7 +52,6 @@ class ServiceController extends Controller
        $servicesData=Service::select()->with('employees')->where('id', $id)->get();
        foreach ($servicesData[0]->employees as $employee) {
         $workingHours = WorkingHour::where('employee_id', $employee->id)->where('date', '=', date("Y-m-d", strtotime($request->date)))
-
             
             ->whereTime('start_time', '<=', date("H:i:s", strtotime($request->start_time)))
             ->whereTime('finish_time', '>', date("H:i:s", strtotime($request->start_time)))
@@ -55,7 +62,6 @@ class ServiceController extends Controller
                 $employeesAvailable[]=$employee->id;
             }
         }
-    //  dd(1);
 
         if(count($employeesAvailable)==0){
         return view('user.client.booking', ['employeeData' => null]);
