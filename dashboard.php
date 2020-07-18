@@ -1,3 +1,12 @@
+<!-- 
+this  file is for a video upload project
+it checks for a user video and details of the video
+Javascript code is in the last of the file
+It checks for the video details to be added
+it verify for a video and all the details to be correct
+If there is some error it will return user and display error
+ -->
+
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <style type="text/css">
@@ -504,7 +513,7 @@ $(document).ready(function() {
 	});
 });
 
-// Code to get duration of audio /video file before upload - from: http://coursesweb.net/
+// Code to get duration of audio /video file before upload - 
   
   //register canplaythrough event to #audio element to can get duration
   var f_duration =0;  //store duration
